@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  postgis:
+    image: postgis/postgis:16-3.4
+    container_name: water_postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: geodata
+      POSTGRES_USER: geoserver
+      POSTGRES_PASSWORD: geoserver
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+
+  geoserver:
+    image: docker.osgeo.org/geoserver:2.23.x
+    container_name: water_geoserver
+    restart: unless-stopped
+    depends_on:
+      - postgis
+    environment:
+      GEOSERVER_ADMIN_USER: admin
+      GEOSERVER_ADMIN_PASSWORD: geoserver
+
+      # Optional: use your own data dir (recommended)
+      GEOSERVER_DATA_DIR: /opt/geoserver_data
+
+      # Only needed if you want extra plugins (not required for PostGIS)
+      # INSTALL_EXTENSIONS: "true"
+      # STABLE_EXTENSIONS: "monitor,ysld"
+
+    ports:
+      - "8080:8080"
+    volumes:
+      - geoserver_data:/opt/geoserver_data
+
+volumes:
+  postgis_data:
+  geoserver_data:
