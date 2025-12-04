@@ -26,7 +26,7 @@ This application allows users to view, add, edit, and delete water dispenser loc
 
 ```bash
 # Clone repository
-git clone <your-repository-url>
+git clone https://github.com/Feramizxx/water-dispenser-app.git
 cd water-dispencer-vue
 
 # Install dependencies
