@@ -1,1 +1,122 @@
 @import "tailwindcss";
+
+/* ===========================================
+   GLOBAL ACCESSIBILITY UTILITIES
+   =========================================== */
+
+/* Screen reader only - hides content visually but keeps it accessible */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Make sr-only content visible when focused (for skip links) */
+.sr-only.focus\:not-sr-only:focus {
+	position: static;
+	width: auto;
+	height: auto;
+	padding: inherit;
+	margin: inherit;
+	overflow: visible;
+	clip: auto;
+	white-space: normal;
+}
+
+/* ===========================================
+   GLOBAL FOCUS STYLES (WCAG 2.1 AA)
+   =========================================== */
+
+/* Enhanced focus styles for better keyboard navigation */
+*:focus-visible {
+	outline: 2px solid #3b82f6;
+	outline-offset: 2px;
+}
+
+/* Ensure interactive elements have visible focus indicators */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+	outline: 2px solid #3b82f6;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* ===========================================
+   OPENLAYERS GLOBAL OVERRIDES
+   =========================================== */
+
+/* Zoom Controls - Accessibility Improvements */
+/* Increase touch target size to meet WCAG 2.5.5 (minimum 44x44px) */
+.ol-zoom {
+	top: 0.75rem;
+	left: unset;
+	right: 0.75rem;
+}
+
+.ol-zoom button {
+	display: block;
+	width: 44px !important;
+	height: 44px !important;
+	min-width: 44px;
+	min-height: 44px;
+	font-size: 1.5rem !important;
+	line-height: 44px !important;
+	margin: 4px 0 !important;
+	background-color: #ffffff !important;
+	border-radius: 8px !important;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.ol-zoom button:hover {
+	background-color: #f8fafc !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+	transform: scale(1.05);
+}
+
+.ol-zoom button:focus {
+	outline: 2px solid #3b82f6 !important;
+	outline-offset: 2px;
+	background-color: #eff6ff !important;
+}
+
+.ol-zoom button:focus-visible {
+	outline: 3px solid #3b82f6 !important;
+	outline-offset: 2px;
+}
+
+.ol-zoom button:active {
+	transform: scale(0.98);
+	background-color: #e2e8f0 !important;
+}
+
+/* Increase spacing between zoom in/out buttons */
+.ol-zoom .ol-zoom-in {
+	margin-bottom: 8px !important;
+}
+
+/* Ensure good contrast for zoom button text */
+.ol-zoom button {
+	color: #1e293b !important;
+}
+
+/* Attribution control - make it less intrusive but still accessible */
+.ol-attribution {
+	font-size: 0.75rem;
+	max-width: 90%;
+}
+
+.ol-attribution button {
+	min-width: 32px;
+	min-height: 32px;
+}

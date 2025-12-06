@@ -163,47 +163,46 @@ function handleDelete () {
           class="italic"
         >click the map</span>
       </div>
-    </form>
 
-    <div
-      role="group"
-      aria-label="Dispenser actions"
-      class="mt-4 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3"
-    >
-      <button
-        type="button"
-        aria-label="Add new water dispenser"
-        :disabled="loading || !clickedCoord"
-        :aria-busy="loading"
-        class="w-full sm:w-auto rounded-md bg-blue-600 px-4 py-2.5 sm:py-2 text-sm sm:text-base text-white disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-700 transition"
-        @click="handleCreate"
+      <div
+        role="group"
+        aria-label="Dispenser actions"
+        class="mt-4 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3"
       >
-        <span v-if="loading">Adding...</span>
-        <span v-else>Add dispenser</span>
-      </button>
-      <button
-        type="button"
-        aria-label="Update selected water dispenser"
-        :disabled="loading || !selectedFeature"
-        :aria-busy="loading"
-        class="w-full sm:w-auto rounded-md bg-amber-500 px-4 py-2.5 sm:py-2 text-sm sm:text-base text-white disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 hover:bg-amber-600 transition"
-        @click="handleUpdate"
-      >
-        <span v-if="loading">Updating...</span>
-        <span v-else>Update selected</span>
-      </button>
-      <button
-        type="button"
-        aria-label="Delete selected water dispenser"
-        :disabled="loading || !selectedFeature"
-        :aria-busy="loading"
-        class="w-full sm:w-auto rounded-md bg-rose-600 px-4 py-2.5 sm:py-2 text-sm sm:text-base text-white disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 hover:bg-rose-700 transition"
-        @click="handleDelete"
-      >
-        <span v-if="loading">Deleting...</span>
-        <span v-else>Delete selected</span>
-      </button>
-    </div>
+        <button
+          type="submit"
+          aria-label="Add new water dispenser"
+          :disabled="loading || !clickedCoord"
+          :aria-busy="loading"
+          class="w-full sm:w-auto rounded-md bg-blue-600 px-4 py-2.5 sm:py-2 text-sm sm:text-base text-white disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-700 transition"
+        >
+          <span v-if="loading">Adding...</span>
+          <span v-else>Add dispenser</span>
+        </button>
+        <button
+          type="button"
+          aria-label="Update selected water dispenser"
+          :disabled="loading || !selectedFeature"
+          :aria-busy="loading"
+          class="w-full sm:w-auto rounded-md bg-amber-500 px-4 py-2.5 sm:py-2 text-sm sm:text-base text-white disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 hover:bg-amber-600 transition"
+          @click="handleUpdate"
+        >
+          <span v-if="loading">Updating...</span>
+          <span v-else>Update selected</span>
+        </button>
+        <button
+          type="button"
+          aria-label="Delete selected water dispenser"
+          :disabled="loading || !selectedFeature"
+          :aria-busy="loading"
+          class="w-full sm:w-auto rounded-md bg-rose-600 px-4 py-2.5 sm:py-2 text-sm sm:text-base text-white disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 hover:bg-rose-700 transition"
+          @click="handleDelete"
+        >
+          <span v-if="loading">Deleting...</span>
+          <span v-else>Delete selected</span>
+        </button>
+      </div>
+    </form>
 
     <!-- Live region for status messages (screen reader announcement) -->
     <div
